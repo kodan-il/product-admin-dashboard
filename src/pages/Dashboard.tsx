@@ -32,16 +32,16 @@ const Dashboard: React.FC = () => {
                 Dashboard
             </Typography>
             <Grid container spacing={3}>
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <StatCard title="Total Users" value="1,234" icon={<PeopleIcon />} color="#1976d2" />
                 </Grid>
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <StatCard title="Total Products" value="567" icon={<ShoppingCartIcon />} color="#2e7d32" />
                 </Grid>
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <StatCard title="Sales Growth" value="+12.5%" icon={<TrendingUpIcon />} color="#ed6c02" />
                 </Grid>
-                <Grid xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                     <StatCard title="Revenue" value="$45,678" icon={<MoneyIcon />} color="#9c27b0" />
                 </Grid>
             </Grid>

@@ -20,10 +20,10 @@ const Settings: React.FC = () => {
                     Profile Settings
                 </Typography>
                 <Grid container spacing={3}>
-                    <Grid xs={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <TextField fullWidth label="Full Name" defaultValue="Admin User" margin="normal" />
                     </Grid>
-                    <Grid xs={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <TextField fullWidth label="Email Address" defaultValue="admin@example.com" margin="normal" />
                     </Grid>
                 </Grid>
