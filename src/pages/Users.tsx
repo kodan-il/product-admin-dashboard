@@ -158,7 +158,9 @@ const Users: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                data-testid="user-name-input"
+                slotProps={{
+                    htmlInput: { 'data-testid': 'user-name-input' }
+                }}
               />
               <TextField
                 label="Email"
@@ -169,7 +171,9 @@ const Users: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                data-testid="user-email-input"
+                slotProps={{
+                    htmlInput: { 'data-testid': 'user-email-input' }
+                }}
               />
               <TextField
                 select
@@ -179,7 +183,9 @@ const Users: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, role: e.target.value })
                 }
-                data-testid="user-role-select"
+                slotProps={{
+                    htmlInput: { 'data-testid': 'user-role-select' }
+                }}
               >
                 <MenuItem value="Admin">Admin</MenuItem>
                 <MenuItem value="Editor">Editor</MenuItem>
