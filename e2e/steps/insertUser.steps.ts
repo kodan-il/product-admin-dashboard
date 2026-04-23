@@ -36,7 +36,6 @@ When('I enter email wrong', async ({ page }) => {
     await page.getByTestId('user-role-select').fill('Viewer');
 });
 
-
 When('I click Save User', async ({ page }) => {
     await page.getByTestId('save-user-button').click();
 });
@@ -50,4 +49,13 @@ Then('I should get browser validation', async ({ page }) => {
 
     const isInvalid = await emailInput.evaluate((node) => !node.checkValidity());
     expect(isInvalid).toBe(true);
+});
+
+When('I should see {string} in user list table', async ({ page }, name: string) => {
+    const grid = page.getByRole('grid');
+    await expect(grid).toBeVisible();
+
+    const nameCell = page.getByRole('gridcell', { name: name });
+
+    await expect(nameCell).toBeVisible();
 });

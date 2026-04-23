@@ -1,4 +1,4 @@
-Feature: Adduser
+Feature: Add User
 
   Scenario: User input successfully
     Given I am logged on and access the user page
@@ -6,6 +6,7 @@ Feature: Adduser
     When I enter valid user information
     And I click Save User
     Then I should be redirected to the user page
+    And I should see "testingUser" in user list table
 
   Scenario: User does not fill email
     Given I am logged on and access the user page
