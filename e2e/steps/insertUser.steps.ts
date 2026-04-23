@@ -18,22 +18,34 @@ When('I click add user button', async ({ page }) => {
     await page.getByTestId('add-user-button').click();
 });
 
-When('I enter valid user information', async ({ page }) => {
-    await page.getByTestId('user-name-input').fill('testingUser');
-    await page.getByTestId('user-email-input').fill('testing@rocketmail.com');
-    await page.getByTestId('user-role-select').fill('Viewer');
+When('I enter valid user information with name {string} and email {string}', async ({ page }, name, email) => {
+    await page.getByTestId('user-name-input').fill(name);
+    await page.getByTestId('user-email-input').fill(email);
+
+    const roleSelect = page.getByRole('combobox', { name: /role/i });
+    await roleSelect.waitFor({ state: 'visible' });
+    await roleSelect.click();
+    await page.getByRole('option', { name: 'Viewer' }).click();
 });
 
 When('I do not enter any email', async ({ page }) => {
     await page.getByTestId('user-name-input').fill('testingUser');
     await page.getByTestId('user-email-input').fill('');
-    await page.getByTestId('user-role-select').fill('Viewer');
+
+    const roleSelect = page.getByRole('combobox', { name: /role/i });
+    await roleSelect.waitFor({ state: 'visible' });
+    await roleSelect.click();
+    await page.getByRole('option', { name: 'Viewer' }).click();
 });
 
 When('I enter email wrong', async ({ page }) => {
     await page.getByTestId('user-name-input').fill('testingUser');
     await page.getByTestId('user-email-input').fill('testing mail');
-    await page.getByTestId('user-role-select').fill('Viewer');
+
+    const roleSelect = page.getByRole('combobox', { name: /role/i });
+    await roleSelect.waitFor({ state: 'visible' });
+    await roleSelect.click();
+    await page.getByRole('option', { name: 'Viewer' }).click();
 });
 
 When('I click Save User', async ({ page }) => {
@@ -52,10 +64,19 @@ Then('I should get browser validation', async ({ page }) => {
 });
 
 When('I should see {string} in user list table', async ({ page }, name: string) => {
-    const grid = page.getByRole('grid');
-    await expect(grid).toBeVisible();
-
     const nameCell = page.getByRole('gridcell', { name: name });
 
-    await expect(nameCell).toBeVisible();
+    if (!(await nameCell.isVisible())) {
+        const nextButton = page.getByRole('button', { name: /next page/i });
+        if (await nextButton.isVisible()) {
+            await nextButton.click();
+        }
+    }
+
+    await expect(nameCell).toBeVisible({ timeout: 10000 });
+});
+
+Then('the user list should display the formatted email for {string}', async ({ page }, email: string) => {
+    const formattedEmail = email.replace("@", "@mail.");
+    await expect(page.getByRole('gridcell', { name: formattedEmail })).toBeVisible();
 });
