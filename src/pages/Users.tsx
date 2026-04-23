@@ -183,8 +183,10 @@ const Users: React.FC = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, role: e.target.value })
                 }
-                SelectProps={{
-                  SelectDisplayProps: { 'data-testid': 'user-role-select' }
+                slotProps={{
+                    select: {
+                      SelectDisplayProps: { 'data-testid': 'user-role-select' }
+                    }
                 }}
               >
                 <MenuItem value="Admin">Admin</MenuItem>
