@@ -16,7 +16,7 @@ Feature: Add User
     And I click Save User
     Then I should get browser validation
 
-  Scenario: User enter wrong formal of email
+  Scenario: User enter wrong format of email
     Given I am logged on and access the user page
     And I click add user button
     When I enter email wrong
