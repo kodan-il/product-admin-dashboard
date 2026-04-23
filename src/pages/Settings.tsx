@@ -12,7 +12,7 @@ const Settings: React.FC = () => {
 
     return (
         <Box>
-            <Typography variant="h4" gutterBottom fontWeight="bold">
+            <Typography variant="h4" gutterBottom sx={{fontWeight: 'bold'}}>
                 Settings
             </Typography>
             <Paper sx={{ p: 4, borderRadius: 3 }}>
@@ -20,10 +20,10 @@ const Settings: React.FC = () => {
                     Profile Settings
                 </Typography>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={6}>
+                    <Grid xs={12} md={6}>
                         <TextField fullWidth label="Full Name" defaultValue="Admin User" margin="normal" />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid xs={12} md={6}>
                         <TextField fullWidth label="Email Address" defaultValue="admin@example.com" margin="normal" />
                     </Grid>
                 </Grid>

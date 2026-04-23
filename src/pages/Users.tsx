@@ -24,7 +24,7 @@ const Users: React.FC = () => {
   const queryClient = useQueryClient();
   const { data: response, isLoading, error } = useGetUsers();
   const users = response?.data;
-  const currentUser = "Test";
+//   const currentUser = "Test";
 
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -115,7 +115,7 @@ const Users: React.FC = () => {
           mb: 3,
         }}
       >
-        <Typography variant="h4" fontWeight="bold">
+        <Typography variant="h4" sx={{fontWeight: 'bold'}}>
           Users
         </Typography>
         <Button
